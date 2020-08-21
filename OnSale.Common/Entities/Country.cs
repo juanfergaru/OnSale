@@ -9,7 +9,7 @@ namespace OnSale.Common.Entities
     {
         public int Id { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50, ErrorMessage = "The maximum characters allowed is 50")]
         [Required]
         public string Name { get; set; }
     }
