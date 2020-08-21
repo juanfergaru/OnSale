@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace OnSale.Common.Entities
 {
@@ -12,6 +11,12 @@ namespace OnSale.Common.Entities
         [MaxLength(50, ErrorMessage = "The maximum characters allowed is 50")]
         [Required]
         public string Name { get; set; }
+
+        public ICollection<Department> Departments { get; set; }
+
+        [DisplayName("Departments Number")]
+        public int DepartmentsNumber => Departments == null ? 0 : Departments.Count;
     }
 
 }
+
