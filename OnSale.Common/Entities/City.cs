@@ -18,4 +18,5 @@ namespace OnSale.Common.Entities
 
     }
 
+
 }
