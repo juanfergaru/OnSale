@@ -9,6 +9,7 @@ namespace OnSale.Web.Data
         {
         }
 
+        public DbSet<Category> Categories { get; set; }
 
         public DbSet<City> Cities { get; set; }
 
@@ -16,9 +17,17 @@ namespace OnSale.Web.Data
 
         public DbSet<Department> Departments { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductImage> ProductImages { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Category>()
+                .HasIndex(t => t.Name)
+                .IsUnique();
 
             modelBuilder.Entity<City>()
                 .HasIndex(t => t.Name)
@@ -29,6 +38,10 @@ namespace OnSale.Web.Data
                .IsUnique();
 
             modelBuilder.Entity<Department>()
+               .HasIndex(t => t.Name)
+               .IsUnique();
+
+            modelBuilder.Entity<Product>()
                .HasIndex(t => t.Name)
                .IsUnique();
         }
